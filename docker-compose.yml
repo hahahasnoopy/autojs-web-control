@@ -8,7 +8,9 @@ services:
       - 9317:9317
     depends_on: 
       - mysql
+        condition: service_completed_successfully
       - redis
+        condition: service_completed_successfully
     environment:
       DB_HOST: mysql
       REDIS_HOST: redis
