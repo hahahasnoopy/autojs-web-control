@@ -7,9 +7,9 @@ services:
     ports:
       - 9317:9317
     depends_on: 
-      - mysql
+      mysql:
         condition: service_completed_successfully
-      - redis
+      redis:
         condition: service_completed_successfully
     environment:
       DB_HOST: mysql
