@@ -9,7 +9,7 @@ import getLogger from './log4js';
 const logger = getLogger('redis.ts');
 
 export const redis = new Redis({
-  host: '127.0.0.1',
+  host: process.env.REDIS_HOST ||'127.0.0.1',
   port: 6379,
   db: 1,
   retryStrategy: times => Math.min(times * 500, 2000),

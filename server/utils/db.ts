@@ -9,7 +9,7 @@ const logger = getLogger('db.ts');
 
 const orm = new DBM({
   connectionLimit: 10,
-  host: 'localhost',
+  host: process.env.DB_HOST||"localhost",
   port: 3306,
   user: 'root',
   password: 'Mysql@123456',

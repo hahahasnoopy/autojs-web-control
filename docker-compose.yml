@@ -9,6 +9,9 @@ services:
     depends_on: 
       - mysql
       - redis
+    environment:
+      DB_HOST: mysql
+      REDIS_HOST: redis
 
   mysql:
     image: mysql:5.7
