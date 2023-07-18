@@ -44,5 +44,15 @@ services:
       timeout: 10s
       retries: 3
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: Mysql@123456
+    ports:
+      - 8888:80
+    depends_on:
+      - mysql
 volumes:
   mysql_data:
