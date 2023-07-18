@@ -14,7 +14,7 @@ services:
       DB_HOST: mysql
       REDIS_HOST: redis
 
-  wait-for-db:
+ wait-for-db:
     image: alpine:latest
     depends_on:
       - mysql
