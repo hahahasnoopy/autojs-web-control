@@ -14,10 +14,11 @@ COPY packages/ ./packages/
 COPY server/package*.json ./server/
 WORKDIR /usr/src/app/server
 RUN npm install
-RUN npm run build
 
 # Bundle server app source
 COPY server/ ./
+RUN npm run build
+
 
 # Install web dependencies
 WORKDIR /usr/src/app/web
