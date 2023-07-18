@@ -1,5 +1,5 @@
 import { getToken } from '@/utils/auth';
-const wshost = process.env.VUE_APP_WS_HOST;
+const wshost = "ws://" + location.host;
 
 export default class WebSocketManager {
   static instance = null;
