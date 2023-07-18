@@ -36,4 +36,4 @@ WORKDIR /usr/src/app/server
 CMD [ "npm", "start" ]
 
 # Expose the port
-EXPOSE 8080
+EXPOSE 9317
