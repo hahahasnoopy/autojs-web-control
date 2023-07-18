@@ -9,10 +9,17 @@ services:
     depends_on: 
       - mysql
       - redis
+      - wait-for-db
     environment:
       DB_HOST: mysql
       REDIS_HOST: redis
 
+ wait-for-db:
+    image: alpine:latest
+    depends_on:
+      - mysql
+    command: >
+      sh -c "until mysqladmin ping -h db --silent; do echo waiting for db; sleep 1; done;"
   mysql:
     image: mysql:5.7
     restart: always
