@@ -14,6 +14,7 @@ COPY packages/ ./packages/
 COPY server/package*.json ./server/
 WORKDIR /usr/src/app/server
 RUN npm install
+RUN npm build
 
 # Bundle server app source
 COPY server/ ./
