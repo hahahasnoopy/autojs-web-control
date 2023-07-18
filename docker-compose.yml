@@ -23,6 +23,8 @@ services:
       - 3306:3306
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./server.cloud_auto.sql:/docker-entrypoint-initdb.d/init.sql
+
 
   redis:
     image: "redis:alpine"
