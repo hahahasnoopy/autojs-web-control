@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "clean": "ts-clean",
+    "start": "node modules/default/main",
     "lint": "tslint --fix -p tsconfig.json -c tslint.json"
   },
   "_moduleAliases": {
@@ -35,8 +36,8 @@
     "moment": "^2.24.0",
     "mysql": "^2.16.0",
     "reflect-metadata": "^0.1.12",
-    "soul-orm": "git+https://github.com/zrk1993/soul-orm.git",
-    "souljs": "git+https://github.com/zrk1993/souljs.git",
+    "soul-orm": "file:../packages/soul-orm.tgz",
+    "souljs": "file:../packages/souljs.tgz",
     "sqlstring": "^2.3.1",
     "swagger-ui-dist": "^3.20.5",
     "uuid": "^3.3.2",
