@@ -8,9 +8,9 @@ services:
       - 9317:9317
     depends_on: 
       mysql:
-        condition: service_completed_successfully
+        condition: service_healthy
       redis:
-        condition: service_completed_successfully
+        condition: service_healthy
     environment:
       DB_HOST: mysql
       REDIS_HOST: redis
@@ -26,12 +26,22 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./server.cloud_auto.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
 
 
   redis:
     image: "redis:alpine"
     ports:
       - 6379:6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
 
 volumes:
   mysql_data:
