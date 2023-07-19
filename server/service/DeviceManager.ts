@@ -43,7 +43,7 @@ export class DeviceManager {
 
     WebSocketManager.getInstance().addClientStatusChangeListener((client, status) => {
       if (status === 'open' && client.type === 'device') {
-        WebSocketManager.getInstance().sendMessage(client, { type: 'hello', data: { server_version: 2 } });
+        // WebSocketManager.getInstance().sendMessage(client, { type: 'hello', data: { server_version: 2 } });
       }
     });
 
@@ -51,7 +51,16 @@ export class DeviceManager {
       if (client.type === 'device') {
         const message = JSON.parse(data as string);
         if (message.type === 'hello') {
-          // client.extData.device_name = message.data.device_name;
+          const appVersionCode = message.data['app_version_code']
+          const message_id = `${Date.now()}_${Math.random()}`;
+          if (appVersionCode >= 629) {
+            WebSocketManager.getInstance().sendMessage(client, { message_id,data:"ok",version:"1.111.0",debug:false,type:'hello'});
+          } else {
+            WebSocketManager.getInstance().sendMessage(client, { type: 'hello', data: "连接成功",message_id });
+          }
+        }
+        if (message.type === 'ping'){
+          WebSocketManager.getInstance().sendMessage(client, { type: 'pong', data: message.data });
         }
       }
     });
