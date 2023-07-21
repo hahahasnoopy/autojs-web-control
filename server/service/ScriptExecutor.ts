@@ -20,7 +20,7 @@ export default class ScriptExecutor {
     const data = {
       type: 'command',
       data: {
-        command: 'run',
+        command: 'rerun',
         id: fileName,
         view_id: fileName,
         name: fileName,
